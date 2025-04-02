@@ -1,0 +1,28 @@
+import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBaTVNUQtoL08WkWjWb9r8ioyDdBv7JZpk",
+    authDomain: "linkedin-clone-d2e93.firebaseapp.com",
+    projectId: "linkedin-clone-d2e93",
+    storageBucket: "linkedin-clone-d2e93.appspot.com",
+    messagingSenderId: "879122631209",
+    appId: "1:879122631209:web:8bba12a55bdc05b4236a38",
+    measurementId: "G-E741M8J1ZN"
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
+const auth = getAuth(firebaseApp);
+const provider = new GoogleAuthProvider();
+const storage = getStorage(firebaseApp);
+
+auth.settings = {
+  appVerificationDisabledForTesting: true // Only use in development
+};
+
+export { auth, provider, storage, signInWithPopup };
+export default db;
